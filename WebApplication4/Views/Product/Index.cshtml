@@ -1,0 +1,50 @@
+@model IEnumerable<WebApplication4.Models.Product>
+
+@{
+    ViewBag.Title = "Prodcut";
+
+}
+
+
+<h2>Product</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Images)
+        </th>
+        <th>
+             Retail Price 
+        </th>
+        <th>
+             Wholesale Price 
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Images)" alt="IMAGES" width="100" height="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Retail_Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wholesale_Price)
+            </td>
+            <td>
+                <a href="~/Account/Login">Add to cart</a> |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            </td>
+        </tr>
+    }
+
+</table>
